@@ -29,28 +29,28 @@ export default [
         path: '/dashboard',
         name: 'dashboard',
         icon: 'dashboard',
-        component: './Dashboard/UserDashboard/UserDashboard',
+        component: './_Dashboard',
       },
       // Audio Allies Stuff
       {
         name: 'account',
         icon: 'user',
         path: '/account',
-        component: './Account/Center/Center',
+        component: './_Account/Profile',
       },
       //sendmessage
       {
         name: 'Send Message',
         icon: 'message',
-        path: '/message',
-        component: './Account/Center/Center',
+        path: '/messages',
+        component: './_Messages',
       },
       //upgrademembership
       {
         name: 'My Membership',
         icon: 'project',
         path: '/membership',
-        component: './Account/Center/Center',
+        component: './_Account/Profile',
       },
       //uploadepisode
       {

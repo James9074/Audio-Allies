@@ -5,7 +5,7 @@ import router from 'umi/router';
 import { Card, Row, Col, Icon, Avatar, Tag, Divider, Spin, Input } from 'antd';
 import GridContent from '@/components/PageHeaderWrapper/GridContent';
 import ProfileView from '@/pages/Account/Settings/ProfileView';
-import styles from './Center.less';
+import styles from './index.less';
 
 @connect(({ loading, user, project }) => ({
   listLoading: loading.effects['list/fetch'],
@@ -14,7 +14,7 @@ import styles from './Center.less';
   project,
   projectLoading: loading.effects['project/fetchNotice'],
 }))
-class Center extends PureComponent {
+class AccountProfile extends PureComponent {
   state = {
     newTags: [],
     inputVisible: false,
@@ -171,4 +171,4 @@ class Center extends PureComponent {
   }
 }
 
-export default Center;
+export default AccountProfile;

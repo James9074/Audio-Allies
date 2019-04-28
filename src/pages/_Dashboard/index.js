@@ -28,7 +28,7 @@ import {
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import Result from '@/components/Result';
 
-import styles from './UserDashboard.less';
+import styles from './index.less';
 
 const FormItem = Form.Item;
 const RadioButton = Radio.Button;
@@ -41,7 +41,7 @@ const { Search, TextArea } = Input;
   loading: loading.models.episodes,
 }))
 @Form.create()
-class UserDashboard extends PureComponent {
+class Dashboard extends PureComponent {
   state = { visible: false, done: false };
 
   formLayout = {
@@ -382,4 +382,4 @@ class UserDashboard extends PureComponent {
   }
 }
 
-export default UserDashboard;
+export default Dashboard;
