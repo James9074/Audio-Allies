@@ -10,12 +10,25 @@ class ChatMessage extends PureComponent {
       avatar,
       message,
       datetime,
-      sender
+      sender,
+      isUser,
+      className
     } = this.props;
 
     return (
-      <div>
-          test
+      <div className={className} style={{display: "flow-root"}}>
+        <div style={{float: isUser ? "left" : "right"}} className={[styles.messageBlock, isUser ? styles.otherUserBlock : styles.userBlock].join(' ')}>
+            <Avatar src={avatar} className={ isUser ? styles.leftAvatar : styles.rightAvatar}/>
+            <div>
+                <div className={styles.messageMeta}>
+                    <span className={styles.authorName} >{sender}</span>
+                    <span className={styles.dateTime}>{datetime}</span>
+                    <span>{isUser}</span>
+                </div>
+                <span>{message}</span>
+            </div>
+        </div>
+        
       </div>
     );
   }

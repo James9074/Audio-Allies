@@ -1,0 +1,56 @@
+@import '~antd/lib/style/themes/default.less';
+
+.messageBlock {
+  width: 50%;
+  margin-top: (@font-size-base * @line-height-base - @input-height-base) / 2;
+  line-height: @input-height-base;
+  padding: 15px;
+  background-color:white;
+}
+
+.otherUserBlock {
+    border-radius: 15px 35px 35px 5px;
+}
+
+.userBlock {
+    border-radius: 35px 15px 5px 35px;
+}
+
+.messageMeta {
+    display: block;
+
+    & > span {
+        
+        height: 18px;
+        padding-right: 8px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .dateTime {
+        color: #ccc;
+        white-space: nowrap;
+        cursor: auto;
+    }
+
+    .authorName {
+        color: rgba(0, 0, 0, 0.45);
+    }
+}
+
+
+.leftAvatar {
+    float: left;
+    position: relative;
+    flex-shrink: 0;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.rightAvatar {
+    float: right;
+    position: relative;
+    flex-shrink: 0;
+    margin-right: 12px;
+    cursor: pointer;
+}

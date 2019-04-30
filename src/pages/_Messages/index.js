@@ -12,29 +12,31 @@ import styles from './index.less';
 const data = [
   {
     //actions: [<span>Reply to</span>],
-    author: 'Han Solo',
+    author: 'Bianca',
     avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
     content: (
-      <p>We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.</p>
+      <p>Howdy Jessica, that shouldn't be an issue - please let me know if you have any problems uploading though!.</p>
     ),
     datetime: (
       <Tooltip title={moment().subtract(1, 'days').format('YYYY-MM-DD HH:mm:ss')}>
         <span>{moment().subtract(1, 'days').fromNow()}</span>
       </Tooltip>
     ),
+    isUser: false
   },
   {
     //actions: [<span>Reply to</span>],
-    author: 'Han Solo',
+    author: 'Jessica Bridges',
     avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
     content: (
-      <p>We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.</p>
+      <p>Hey Bianca! I was wondering if we'd be able to submit large FLAC files (>800mb) to you for future episodes.</p>
     ),
     datetime: (
       <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
         <span>{moment().subtract(2, 'days').fromNow()}</span>
       </Tooltip>
     ),
+    isUser: true
   },
 ];
 
@@ -152,48 +154,25 @@ class Messages extends PureComponent {
     const { comments, submitting, value } = this.state;
 
     return (
-      <GridContent className={styles.userCenter}>
+      <GridContent className={styles.messagesPage}>
         <Row gutter={24}>
           <Col lg={24} md={24}>
-            <Card
-              className={styles.messagesContainer}
-              bordered={true}
-              title={'Message Center'}
-              activeTabKey={location.pathname.replace(`${match.path}/`, '')}
-              onTabChange={this.onTabChange}
-              loading={listLoading}
-            >
-            
-              <Card
-                className={styles.messageBox}
-                bordered={true}
-                loading={listLoading}
-              >     
-              <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                Test
-              </Card>
 
+            
               <List
                 className="comment-list"
                 header={`${data.length} replies`}
                 itemLayout="horizontal"
                 dataSource={data}
                 renderItem={item => (
-                  <div>
-                    <Comment
-                      actions={item.actions}
-                      author={item.author}
-                      avatar={item.avatar}
-                      content={item.content}
-                      datetime={item.datetime}
-                    />  
-                    <ChatMessage 
-                      author={item.author}
+                    <ChatMessage
+                      className={styles.message}
+                      sender={item.author}
                       avatar={item.avatar}
                       message={item.content}
-                      sender={item.datetime}
+                      datetime={item.datetime}
+                      isUser={item.isUser}
                     />
-                  </div>            
                   )}
                   />
                 <div>
@@ -214,8 +193,7 @@ class Messages extends PureComponent {
                       />
                     )}
                   />
-                </div>
-            </Card>            
+                </div>        
           </Col>
         </Row>
       </GridContent>
