@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'dva';
 import Link from 'umi/link';
 import router from 'umi/router';
-import { Card, Row, Col } from 'antd';
+import { Card, Row, Col, Button } from 'antd';
 import styles from './index.less';
 import GridContent from '@/components/PageHeaderWrapper/GridContent';
 
@@ -69,12 +69,15 @@ class Memberships extends PureComponent {
       currentUserLoading
     } = this.props;
 
+    var activeMembership = parseInt(Math.random() * 10 % 3);
+    console.log(activeMembership)
+
     return (
       <GridContent className={styles.userCenter}>
         <Row gutter={24} type="flex">
         {this.membershipPackages.map((membership, index) => {
             return <Col lg={8} xs={24} key={index}>
-            <Card bordered={false} style={{ marginBottom: 24, height: "600px" }} loading={currentUserLoading}>
+            <Card bordered={index === activeMembership} className={styles.activeMembership} style={{ marginBottom: 24, height: "650px" }} loading={currentUserLoading}>
               {currentUser && Object.keys(currentUser).length ? (
                 <div>
                   <div className={styles.membershipHolder}>
@@ -91,6 +94,9 @@ class Memberships extends PureComponent {
                       })}
                     </div>
                   </div>
+                  <Button type="primary" size="large" className={styles.upgradeButton}>
+                    Upgrade
+                  </Button>
                 </div>
               ) : (
                 'loading...'
