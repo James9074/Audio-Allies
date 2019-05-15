@@ -5,6 +5,7 @@ import router from 'umi/router';
 import { Card, Row, Col, Icon, Avatar, Tag, Divider, Spin, Input } from 'antd';
 import GridContent from '@/components/PageHeaderWrapper/GridContent';
 import ProfileView from '@/pages/Account/Settings/ProfileView';
+import Memberships from '../Memberships'
 import styles from './index.less';
 
 @connect(({ loading, user, project }) => ({
@@ -121,51 +122,56 @@ class AccountProfile extends PureComponent {
     ];
 
     return (
-      <GridContent className={styles.userCenter}>
-        <Row gutter={24}>
-          <Col lg={7} md={24}>
-            <Card bordered={false} style={{ marginBottom: 24 }} loading={currentUserLoading}>
-              {currentUser && Object.keys(currentUser).length ? (
-                <div>
-                  <div className={styles.avatarHolder}>
-                    <img alt="" src={currentUser.avatar} />
-                    <div className={styles.name}>{currentUser.name}</div>
-                    <div>{currentUser.signature}</div>
+      <GridContent>
+        <div className={styles.profilePage}>
+          <Row gutter={24}>
+            <Col lg={7} md={24}>
+              <Card bordered={false} style={{ marginBottom: 24 }} loading={currentUserLoading}>
+                {currentUser && Object.keys(currentUser).length ? (
+                  <div>
+                    <div className={styles.avatarHolder}>
+                      <img alt="" src={currentUser.avatar} />
+                      <div className={styles.name}>{currentUser.name}</div>
+                      <div>{currentUser.signature}</div>
+                    </div>
+                    <div className={styles.detail}>
+                      <p>
+                        <i className={styles.group} />
+                        Member Since {currentUser.signupDate}
+                      </p>
+                      <p>
+                        <i className={styles.title} />
+                        {currentUser.title}
+                      </p>
+                      <p>
+                        <i className={styles.address} />
+                        {currentUser.geographic.province.label}
+                        {currentUser.geographic.city.label}
+                      </p>
+                    </div>
                   </div>
-                  <div className={styles.detail}>
-                    <p>
-                      <i className={styles.group} />
-                      Member Since {currentUser.signupDate}
-                    </p>
-                    <p>
-                      <i className={styles.title} />
-                      {currentUser.title}
-                    </p>
-                    <p>
-                      <i className={styles.address} />
-                      {currentUser.geographic.province.label}
-                      {currentUser.geographic.city.label}
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                'loading...'
-              )}
-            </Card>
-          </Col>
-          <Col lg={17} md={24}>
-            <Card
-              className={styles.tabsCard}
-              bordered={false}
-              title={'Account Settings'}
-              activeTabKey={location.pathname.replace(`${match.path}/`, '')}
-              onTabChange={this.onTabChange}
-              loading={listLoading}
-            >
-              <ProfileView currentUser={currentUser} />
-            </Card>
-          </Col>
-        </Row>
+                ) : (
+                  'loading...'
+                )}
+              </Card>
+            </Col>
+            <Col lg={17} md={24}>
+              <Card
+                className={styles.tabsCard}
+                bordered={false}
+                title={'Account Settings'}
+                activeTabKey={location.pathname.replace(`${match.path}/`, '')}
+                onTabChange={this.onTabChange}
+                loading={listLoading}
+              >
+                <ProfileView currentUser={currentUser} />
+              </Card>
+            </Col>
+          </Row>
+          <Row>
+            <Memberships {...this.props}/>
+          </Row>
+          </div>
       </GridContent>
     );
   }
