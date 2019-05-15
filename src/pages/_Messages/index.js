@@ -13,7 +13,7 @@ const data = [
   {
     //actions: [<span>Reply to</span>],
     author: 'Bianca',
-    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+    avatar: 'https://static.wixstatic.com/media/a88867_865f3e95da32433495f015b7c582eeb6~mv2.jpg/v1/fill/w_66,h_80,al_c,q_80,usm_0.66_1.00_0.01/BiancaSalinas.webp',
     content: (
       <p>Howdy Jessica, that shouldn't be an issue - please let me know if you have any problems uploading though!.</p>
     ),
@@ -26,8 +26,8 @@ const data = [
   },
   {
     //actions: [<span>Reply to</span>],
-    author: 'Jessica Bridges',
-    avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
+    author: 'Jessica',
+    avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
     content: (
       <p>Hey Bianca! I was wondering if we'd be able to submit large FLAC files (>800mb) to you for future episodes.</p>
     ),
@@ -160,8 +160,8 @@ class Messages extends PureComponent {
 
             
               <List
-                className="comment-list"
-                header={`${data.length} replies`}
+                className={styles.messageList}
+                header={`${data.length} messages between you and Bianca`}
                 itemLayout="horizontal"
                 dataSource={data}
                 renderItem={item => (
@@ -180,7 +180,7 @@ class Messages extends PureComponent {
                   <Comment
                     avatar={(
                       <Avatar
-                        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                        src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
                         alt="Han Solo"
                       />
                     )}
