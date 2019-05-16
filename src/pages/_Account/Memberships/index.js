@@ -76,6 +76,7 @@ class Memberships extends PureComponent {
       <GridContent className={styles.userCenter}>
         <Row gutter={24} type="flex">
         {this.membershipPackages.map((membership, index) => {
+            var currentBadge = index === activeMembership ? "Current Membership" : "";
             return <Col lg={8} xs={24} key={index}>
             <Card bordered={index === activeMembership} className={styles.activeMembership} style={{ marginBottom: 24, height: "650px" }} loading={currentUserLoading}>
               {currentUser && Object.keys(currentUser).length ? (
